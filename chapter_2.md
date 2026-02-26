@@ -210,8 +210,158 @@ $$\begin{aligned}
 
 ### 2.3 乘法
 
-**定义 2.3.1（自然数的乘法）**：在自然数集 $\mathbb{N}$ 上定义乘法运算 $\cdot$ 如下：
+**定义 2.3.1 自然数的乘法**：在自然数集 $\mathbb{N}$ 上定义乘法运算 $\cdot$ 如下：
 1. **基例**：对于任意自然数 $m$，定义 $0 \cdot m = 0$。
 2. **递归定义**：对于任意自然数 $m$ 和 $n$，定义 $ (n\text{++}) \cdot m = (n \cdot m) + m$。
 
-**引理 2.3.2 乘法是可交换的**：
+**引理 2.3.1.1**：对于任意的自然数 $m$，恒有 $m \cdot 0 = 0$ 成立。
+
+**证明**：对 $m$ 施加归纳法。
+1. **基例**：当 $m = 0$ 时，$0 \cdot 0 = 0$，结论成立。
+2. **归纳假设**：假设对于某个自然数 $m$，$m \cdot 0 = 0$ 成立。
+3. **归纳步骤**：
+$$
+\begin{aligned}
+& \text{证明：} (m\text{++}) \cdot 0 = 0 \\
+& \quad \text{乘法的递归定义} \Rightarrow (m\text{++}) \cdot 0 = (m \cdot 0) + 0 \\
+& \quad \text{归纳假设} \Rightarrow (m \cdot 0) + 0 = 0 + 0 \\
+& \quad \text{加法的交换律} \Rightarrow 0 + 0 = 0 \\
+& \quad \text{所以，} (m\text{++}) \cdot 0 = 0
+\end{aligned}
+$$
+
+由数学归纳法，$m \cdot 0 = 0$ 对所有自然数 $m$ 都成立。
+
+**引理 2.3.1.2**：对于任意的自然数 $m$ 和 $n$，恒有 $m \cdot (n\text{++}) = m + m \cdot n$ 成立。
+
+**证明**：对 $m$ 施加归纳法。
+1. **基例**：当 $m = 0$ 时，$0 \cdot (n\text{++}) = 0$ 和 $0 \cdot n + 0 = 0 + 0 = 0$，结论成立。
+2. **归纳假设**：假设对于某个自然数 $m$，$m \cdot (n\text{++}) = m + m \cdot n$ 成立。
+3. **归纳步骤**：
+$$
+\begin{aligned}
+& \text{证明：} (m\text{++}) \cdot (n\text{++}) = (m\text{++}) + (m\text{++}) \cdot n \\
+& \quad \text{乘法的递归定义} \Rightarrow (m\text{++}) \cdot (n\text{++}) = (m \cdot (n\text{++})) + (n\text{++}) \\
+& \quad \text{归纳假设} \Rightarrow (m \cdot (n\text{++})) + (n\text{++}) = (m + m \cdot n) + (n\text{++}) \\
+& \quad \text{加法的结合律} \Rightarrow (m + m \cdot n) + (n\text{++}) = m + (m \cdot n + (n\text{++})) \\
+& \quad \text{引理 2.2.3} \Rightarrow m \cdot n + (n\text{++}) = m \cdot n + (n\text{++}) \\
+& \quad \text{加法的递归定义} \Rightarrow m \cdot n + (n\text{++}) = (m \cdot n)\text{++} \\
+& \quad \text{加法的交换律} \Rightarrow m + ((m \cdot n)\text{++}) = ((m \cdot n)\text{++}) + m \\
+& \quad \text{所以，} m + (n\text{++}) = n + (m\text{++}) \\
+& \quad \text{加法的结合律} \Rightarrow m \cdot n + (n + (m\text{++})) = (m \cdot n + n) + (m\text{++}) \\
+& \quad \text{乘法的递归定义} \Rightarrow (m \cdot n + n) + (m\text{++}) = (m\text{++}) \cdot n + (m\text{++}) \\
+& \quad \text{加法的交换律} \Rightarrow (m\text{++}) \cdot n + (m\text{++}) = (m\text{++}) + (m\text{++}) \cdot n \\
+& \quad \text{所以，} (m\text{++}) \cdot (n\text{++}) = (m\text{++}) + (m\text{++}) \cdot n
+\end{aligned}
+$$
+
+由数学归纳法，$m \cdot (n\text{++}) = m + m \cdot n$ 对所有自然数 $m$ 和 $n$ 都成立。
+
+**引理 2.3.2 乘法是可交换的**：对于任意的自然数 $m$ 和 $n$，恒有 $m \cdot n = n \cdot m$ 成立。
+
+**证明**：对 $m$ 施加归纳法。
+1. **基例**：当 $m = 0$ 时，$0 \cdot n = 0$ 和 $n \cdot 0 = 0$(**引理 2.3.1.1**)，结论成立。
+2. **归纳假设**：假设对于某个自然数 $m$，$m \cdot n = n \cdot m$ 成立。
+3. **归纳步骤**：
+$$\begin{aligned}
+& \text{证明：} (m\text{++}) \cdot n = n \cdot (m\text{++}) \\
+& \quad \text{乘法的递归定义} \Rightarrow (m\text{++}) \cdot n = (m \cdot n) + n \\
+& \quad \text{归纳假设} \Rightarrow (m \cdot n) + n = (n \cdot m) + n \\
+& \quad \text{加法的交换律} \Rightarrow (n \cdot m) + n = n + (n \cdot m) \\
+& \quad \text{引理 2.3.1.2} \Rightarrow n + (n \cdot m) = n \cdot (m\text{++}) \\
+& \quad \text{所以，} (m\text{++}) \cdot n = n \cdot (m\text{++})
+\end{aligned}$$
+
+由数学归纳法，$m \cdot n = n \cdot m$ 对所有自然数 $m$ 和 $n$ 都成立。
+
+**引理 2.3.3 正自然数没有零因子**：对于任意的自然数 $m$ 和 $n$，如果 $m = 0$ 或 $n = 0$，则 $m \cdot n = 0$。
+
+**命题 2.3.4 乘法的分配律**：对于任意的自然数 $m$、$n$ 和 $p$，恒有 $m \cdot (n + p) = m \cdot n + m \cdot p$ 和 $(m + n) \cdot p = m \cdot p + n \cdot p$ 成立。
+
+**证明**：对 $m$ 施加归纳法。
+1. **基例**：当 $m = 0$ 时，$0 \cdot (n + p) = 0$ 和 $0 \cdot n + 0 \cdot p = 0 + 0 = 0$，结论成立。
+2. **归纳假设**：假设对于某个自然数 $m$，$m \cdot (n + p) = m \cdot n + m \cdot p$ 成立。
+3. **归纳步骤**：
+$$\begin{aligned}
+& \text{证明：} (m\text{++}) \cdot (n + p) = (m\text{++}) \cdot n + (m\text{++}) \cdot p \\
+& \quad \text{乘法的递归定义} \Rightarrow (m\text{++}) \cdot (n + p) = (m \cdot (n + p)) + (n + p) \\
+& \quad \text{归纳假设} \Rightarrow (m \cdot (n + p)) + (n + p) = (m \cdot n + m \cdot p) + (n + p) \\
+& \quad \text{加法的交换律} \Rightarrow (m \cdot n + m \cdot p) + (n + p) = (m \cdot n + n) + (m \cdot p + p) \\
+& \quad \text{乘法的递归定义} \Rightarrow (m \cdot n + n) + (m \cdot p + p) = (m\text{++}) \cdot n + (m\text{++}) \cdot p \\
+& \quad \text{所以，} (m\text{++}) \cdot (n + p) = (m\text{++}) \cdot n + (m\text{++}) \cdot p
+\end{aligned}$$
+
+由数学归纳法，乘法的分配律对所有自然数 $m$、$n$ 和 $p$ 都成立。
+
+**命题 2.3.5 乘法的结合律**：对于任意的自然数 $m$、$n$ 和 $p$，恒有 $(m \cdot n) \cdot p = m \cdot (n \cdot p)$ 成立。
+
+**证明**：对 $m$ 施加归纳法。
+1. **基例**：当 $m = 0$ 时，$(0 \cdot n) \cdot p = 0 \cdot p = 0$ 和 $0 \cdot (n \cdot p) = 0$，结论成立。
+2. **归纳假设**：假设对于某个自然数 $m$，$(m \cdot n) \cdot p = m \cdot (n \cdot p)$ 成立。
+3. **归纳步骤**：
+$$\begin{aligned}
+& \text{证明：} ((m\text{++}) \cdot n) \cdot p = (m\text{++}) \cdot (n \cdot p) \\
+& \quad \text{乘法的递归定义} \Rightarrow ((m\text{++}) \cdot n) \cdot p = ((m \cdot n + n) \cdot p \\
+& \quad \text{加法的分配律} \Rightarrow ((m \cdot n + n) \cdot p = (m \cdot n) \cdot p + n \cdot p \\
+& \quad \text{归纳假设} \Rightarrow (m \cdot n) \cdot p + n \cdot p = m \cdot (n \cdot p) + n \cdot p \\
+& \quad \text{加法的递归定义} \Rightarrow m \cdot (n \cdot p) + n \cdot p = (m\text{++}) \cdot (n \cdot p) \\
+& \quad \text{所以，} ((m\text{++}) \cdot n) \cdot p = (m\text{++}) \cdot (n \cdot p)
+\end{aligned}$$
+
+由数学归纳法，乘法的结合律对所有自然数 $m$、$n$ 和 $p$ 都成立。
+
+**命题 2.3.6 乘法保序性**：对于任意的自然数 $m$、$n$ 和 $p$，如果 $m < n$，则 $m \cdot p < n \cdot p$（当 $p \neq 0$ 时）。
+
+**证明**：对 $p$ 施加归纳法。
+1. **基例**：当 $p = 0\text{++}$ 时，$m \cdot 0\text{++} = m$ 和 $n \cdot 0\text{++} = n$，由于 $m < n$，所以 $m \cdot 0\text{++} < n \cdot 0\text{++}$，结论成立。
+2. **归纳假设**：假设对于某个自然数 $p$，如果 $m < n$，则 $m \cdot p < n \cdot p$ 成立。
+3. **归纳步骤**：
+$$\begin{aligned}
+& \text{证明：} m \cdot (p\text{++}) < n \cdot (p\text{++}) \\
+& \quad \text{乘法的递归定义} \Rightarrow m \cdot (p\text{++}) = m \cdot p + m \\
+& \quad \text{乘法的递归定义} \Rightarrow n \cdot (p\text{++}) = n \cdot p + n \\
+& \quad \text{归纳假设} \Rightarrow m \cdot p < n \cdot p \\
+& \quad \text{因为 } m < n \text{，所以 } m \cdot p + m < n \cdot p + n \\
+& \quad \text{所以，} m \cdot (p\text{++}) < n \cdot (p\text{++})
+\end{aligned}$$
+
+由数学归纳法，乘法保序性对所有自然数 $m$、$n$ 和 $p$ 都成立。
+
+**推论 2.3.7 乘法的消去律**：对于任意的自然数 $m$、$n$ 和 $p$，如果 $m \cdot p = n \cdot p$ 且 $p \neq 0$，则 $m = n$。
+
+**证明**：反证法(**命题 2.2.13 三歧性**)
+$$\begin{aligned}
+& \text{假设存在自然数 } m \text{ 和 } n \text{ 使得 } m \cdot p = n \cdot p \text{ 且 } m \neq n \\
+& \text{如果 } m < n \text{，根据命题 2.3.6，} m \cdot p < n \cdot p \\
+& \text{这与 } m \cdot p = n \cdot p \text{ 矛盾} \\
+& \text{如果 }n < m \text{，根据命题 2.3.6，} n \cdot p < m \cdot p \\
+& \text{这与 } m \cdot p = n \cdot p \text{ 矛盾} \\
+& \text{所以，} m = n
+\end{aligned}$$
+
+由反证法，如果 $m \cdot p = n \cdot p$ 且 $p \neq 0$，则必定 $m = n$。
+
+**命题 2.3.9 欧几里得算法**：对于任意的自然数 $a$ 和 $b$，存在唯一的自然数 $q$ 和 $r$，使得 $a = q \cdot b + r$ 且 $0 \leq r < b$。
+
+**证明**：
+1. **存在性**：对 $a$ 施加归纳法。
+   - **基例**：当 $a = 0$ 时，取 $q = 0$ 和 $r = 0$，满足 $0 = 0 \cdot b + 0$ 和 $0 \leq 0 < b$，结论成立。
+   - **归纳假设**：假设对于某个自然数 $a$，存在自然数 $q$ 和 $r$ 使得 $a = q \cdot b + r$ 且 $0 \leq r < b$。
+   - **归纳步骤**：考虑 $a\text{++}$。
+     - 如果 $r\text{++} < b$，则取 $q' = q$ 和 $r' = r\text{++}$，满足 $a\text{++} = q' \cdot b + r'$ 和 $0 \leq r' < b$。
+     - 如果 $r\text{++} = b$，则取 $q' = q\text{++}$ 和 $r' = 0$，满足 $a\text{++} = q' \cdot b + r'$ 和 $0 \leq r' < b$。
+     - 如果 $r\text{++} > b$，则取 $q' = q\text{++}$ 和 $r' = r\text{++} - b$，满足 $a\text{++} = q' \cdot b + r'$ 和 $0 \leq r' < b$。
+2. **唯一性**：假设存在 $q_1, r_1$ 和 $q_2, r_2$ 满足 $a = q_1 \cdot b + r_1$ 和 $a = q_2 \cdot b + r_2$，且 $0 \leq r_1 < b$ 和 $0 \leq r_2 < b$。
+$$\begin{aligned}
+& \text{证明：} q_1 = q_2 \text{ 且 } r_1 = r_2 \\
+& \quad \text{若 } q_1 \neq q_2 \text{，不失一般性假设 } q_1 < q_2 \text{，则 } q_2 = q_1 + k \text{ 对某个自然数 } k > 0 \\
+& \quad \text{于是 } a = q_1 \cdot b + r_1 = (q_1 + k) \cdot b + r_2 = q_1 \cdot b + k \cdot b + r_2 \\
+& \quad \text{所以 } r_1 = k \cdot b + r_2 \\
+& \quad \text{由于 } 0 \leq r_1 < b \text{ 和 } 0 \leq r_2 < b，\text{ 这不可能成立，因为 } k > 0 \\
+& \quad \text{因此，} q_1 = q_2 \\
+& \quad \text{代入得 } r_1 = r_2
+\end{aligned}$$
+
+由数学归纳法和唯一性证明，欧几里得算法对所有自然数 $a$ 和 $b$ 都成立。
+
+**定义 2.3.11 自然数的指数运算**：对于自然数 $m$ 和 $n$，定义 $m^0 = 1$，并定义 $m^{n\text{++}} = m^n \cdot m$。特别的，定义 $0^0 = 1$。
