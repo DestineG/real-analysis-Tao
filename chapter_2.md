@@ -28,7 +28,7 @@
 
 **定义 2.2.1（自然数的加法）**：在自然数集 $\mathbb{N}$ 上定义加法运算 $+$ 如下：
 1. **基例**：对于任意自然数 $m$，定义 $0 + m = m$。
-2. **递归定义**：对于任意自然数 $m$ 和 $n$，定义 $ (n\text{++}) + m = (n + m)\text{++}$。
+2. **递归定义**：对于任意自然数 $m$ 和 $n$，定义 $(n\text{++}) + m = (n + m)\text{++}$。
 
 **引理 2.2.2**：对于任意的自然数 $m$，恒有 $m + 0 = m$ 成立。
 
@@ -365,3 +365,32 @@ $$\begin{aligned}
 由数学归纳法和唯一性证明，欧几里得算法对所有自然数 $a$ 和 $b$ 都成立。
 
 **定义 2.3.11 自然数的指数运算**：对于自然数 $m$ 和 $n$，定义 $m^0 = 1$，并定义 $m^{n\text{++}} = m^n \cdot m$。特别的，定义 $0^0 = 1$。
+
+### 2.4 习题
+
+**习题 2.4.4**：证明等式 $(a + b)^{2} = a^2 + 2ab + b^2$ 对任意自然数 $a$ 和 $b$ 成立。（注：$2x = x + x$）
+
+**证明**：对 $a$ 施加归纳法。
+1. **基例**：当 $a = 0$ 时，$(0 + b)^{2} = b^2$ 和 $0^2 + 2 \cdot 0 \cdot b + b^2 = b^2$，结论成立。
+2. **归纳假设**：假设对于某个自然数 $a$，$(a + b)^{2} = a^2 + 2ab + b^2$ 成立。
+3. **归纳步骤**：考虑 $a\text{++}$。
+$$
+\begin{aligned}
+& \text{证明：}((a\text{++}) + b)^{2} = (a\text{++})^2 + 2(a\text{++})b + b^2 \\
+& \quad \text{指数运算定义 2.3.11} \Rightarrow ((a\text{++}) + b)^{2} = ((a\text{++}) + b) \cdot ((a\text{++}) + b) \\
+& \quad \text{加法递归定义} \Rightarrow ((a\text{++}) + b) \cdot ((a\text{++}) + b) = ((a + b)\text{++}) \cdot ((a + b)\text{++}) \\
+& \quad \text{乘法的递归定义} \Rightarrow ((a + b)\text{++}) \cdot ((a + b)\text{++}) = ((a + b) \cdot ((a + b)\text{++})) + ((a + b)\text{++}) \\
+& \quad \text{乘法的递归定义} \Rightarrow ((a + b) \cdot ((a + b)\text{++})) + ((a + b)\text{++}) = ((a + b) \cdot (a + b)) + (a + b) + ((a + b)\text{++}) \\
+& \quad \text{归纳假设} \Rightarrow ((a + b) \cdot (a + b)) + (a + b) + ((a + b)\text{++}) = (a^2 + 2ab + b^2) + (a + b) + ((a + b)\text{++}) \\
+& \quad \text{加法的递归定义} \Rightarrow (a^2 + 2ab + b^2) + (a + b) + ((a + b)\text{++}) = (a^2 + 2ab + b^2) + (a + b) + ((a\text{++}) + b) \\
+& \quad \text{加法的交换律} \Rightarrow (a^2 + 2ab + b^2) + (a + b) + ((a\text{++}) + b) = (a^2 + a + (a\text{++})) + (2ab + b + b) + b^{2} \\
+& \quad \text{乘法的递归定义} \Rightarrow (a^2 + a + (a\text{++})) + (2ab + b + b) + b^{2} = (a\text{++})^2 + (2ab + b + b) + b^2 \\
+& \quad 2x = x + x \text{ ,加法的交换律} \Rightarrow (a\text{++})^2 + (2ab + b + b) + b^2 = (a\text{++})^2 + (ab + b + ab + b) + b^2 \\
+& \quad \text{加法结合律} \Rightarrow (a\text{++})^2 + (ab + b + ab + b) + b^2 = (a\text{++})^2 + ((ab + b) + (ab + b)) + b^2 \\
+& \quad \text{加法的递归定义} \Rightarrow (a\text{++})^2 + ((ab + b) + (ab + b)) + b^2 = (a\text{++})^2 + ((a\text{++})b + (a\text{++})b) + b^2 \\
+& \quad 2x = x + x \Rightarrow (a\text{++})^2 + ((a\text{++})b + (a\text{++})b) + b^2 = (a\text{++})^2 + 2(a\text{++})b + b^2 \\
+& \quad \text{所以，} ((a\text{++}) + b)^{2} = (a\text{++})^2 + 2(a\text{++})b + b^2
+\end{aligned}
+$$
+
+因此，$(a\text{++} + b)^{2} = (a\text{++})^2 + 2(a\text{++})b + b^2$，结论成立。
